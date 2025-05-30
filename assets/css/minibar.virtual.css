@@ -11,7 +11,7 @@
     padding-left: 15px;
     width: 100%;
     height: 70px;
-    background-color: #2C2D34;
+    background-color: #171925;
     color: #fff;
 }
 
@@ -339,6 +339,8 @@
     color: #858B91;
     z-index: 10;
     overflow: hidden;
+    flex: 1 0 auto; /* Makes main content grow and push the footer down */
+
 }
 
 .page-home {
