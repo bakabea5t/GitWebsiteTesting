@@ -24,6 +24,8 @@
  13. Page Switching
  14. Carousel
  15. Grid (OpenGraph)
+ // added by Jaden (Me)
+ 16. multi-selcect drop down 
 
  */
 
@@ -1424,4 +1426,148 @@ a:hover, a:active {
 
 .theme-purple .theme-list li::before {
     border-color: #6f42c1;
+}
+
+/* 
+     16. Multi-Select Drop Down
+*/
+
+.category-multiselect-container {
+  position: relative;
+  max-width: 100%;
+  width: 100%;
+  z-index: 11;
+}
+
+.select-btn {
+  background-color: #fff;
+  border-radius: 5px;
+  border: 1px solid #e8e8e8;
+  cursor: pointer;
+  display: block;
+  font-size: 14px;
+  height: 42px;
+  line-height: 40px;
+  padding: 0 30px 0 18px;
+  position: relative;
+  transition: all 0.2s ease-in-out;
+  user-select: none;
+}
+.select-btn:hover {
+  border-color: #dbdbdb;
+}
+.select-btn.open {
+  border-color: #999;
+}
+
+.select-btn.open::after {
+  transform: translateY(-50%) rotate(-135deg);
+}
+
+.select-btn::after {
+  content: '';
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  width: 7px;
+  height: 7px;
+  border-right: 2px solid #999;
+  border-bottom: 2px solid #999;
+  transform: rotate(45deg) translateY(-50%);
+  transform-origin: 66% 66%;
+  transition: transform 0.2s ease-in-out;
+}
+
+.select-btn .btn-text {
+  font-size: 16px;
+  color: #333;
+}
+
+.select-btn .arrow-dwn {
+  display: none;
+}
+
+
+.select-btn.open .arrow-dwn {
+  transform: rotate(-180deg);
+}
+
+.list-items {
+    border: 1.5px solid green; /* debug */
+    list-style: none;
+    text-align: left;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 0 1px rgba(68, 68, 68, 0.11);
+    margin-top: 4px;
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    transform: scale(0.75) translateY(-21px);
+    transform-origin: 50% 0;
+    transition: all 0.2s cubic-bezier(0.5, 0, 0, 1.25), opacity 0.15s ease-out;
+    max-height: 250px;
+    overflow-y: auto;
+    z-index: 9;
+}
+
+.select-btn.open + .list-items {
+    display: block;
+    opacity: 1;
+    pointer-events: auto;
+    transform: scale(1) translateY(0);
+}
+
+.list-items .item {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* Ensures checkbox and label are left-aligned */ 
+  padding: 5px;
+  border-radius: 6px;
+  white-space: nowrap;
+  cursor: pointer;
+  border: 1.5px solid red; /* debug */
+}
+
+.list-items .item:hover {
+  background-color: #f6f6f6;
+}
+
+.item .item-text {
+  font-size: 15px;
+  color: #333;
+  text-align: left;
+  flex: 1;
+  flex-grow: 1;             /* Makes label expand in remaining space */
+  overflow: hidden;         /* Hide overflow */
+  text-overflow: ellipsis; /* Show ... if too long */
+  border: 1px dashed blue;
+}
+
+.item .checkbox {
+  height: 16px;
+  width: 16px;
+  border-radius: 4px;
+  margin-right: 12px;
+  border: 1.5px solid #c0c0c0;
+  border: 1.5px solid red; /* debug */
+  
+}
+
+.item.checked .checkbox {
+  background-color: #4070f4;
+  border-color: #4070f4;
+}
+
+.checkbox .check-icon {
+  color: #fff;
+  font-size: 11px;
+  transform: scale(0);
+  transition: transform 0.2s;
+}
+
+.item.checked .check-icon {
+  transform: scale(1);
 }
