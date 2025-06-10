@@ -105,7 +105,7 @@
           </div>
 
           <!-- Right column: Category and Sort dropdowns (4/12 columns wide) -->
-          <div class="col-lg-4">
+          <div class="col-lg-4" >
             <div class="d-flex py-2 mx-n2">
               
               <!-- Category Multi-Select Dropdown -->
@@ -121,7 +121,7 @@
               </div>
 
               <!-- Sort By Dropdown with label -->
-              <div>
+              <div style="width: 80%;">
                 <label for="sortSelect" class="mb-1 font-weight-bold small text-muted">
                   Sort by
                 </label>
@@ -359,7 +359,6 @@
           const matchesQuery =
             query === '' ||
             post.title.toLowerCase().includes(query) ||
-            post.date.toLowerCase().includes(query) ||
             post.categories.some(cat => cat.toLowerCase().includes(query));
 
           const matchesCategory =
@@ -395,7 +394,7 @@
           li.className = "item";
           li.dataset.value = cat;
           li.innerHTML = `
-            <span class="checkbox"><i class="fa-solid fa-check check-icon"></i></span>
+            <span class="checkbox"><i class="fa-solid"></i></span>
             <span class="item-text">${cat}</span>
           `;
           categoryList.appendChild(li);
@@ -437,10 +436,13 @@
           // Populate the new custom dropdown
           populateCategoryDropdown([...categorySet]);
 
-          // Refresh custom styled select UI
-          if ($('.vg-select').niceSelect) {
-            $('.vg-select').niceSelect('update');
-          }
+          // Close the category dropdown when clicking outside
+          document.addEventListener("click", function (event) {
+            const isClickInside = dropdownBtn.contains(event.target) || categoryList.contains(event.target);
+            if (!isClickInside) {
+              dropdownBtn.classList.remove("open");
+            }
+          });
 
           // Populate the new custom dropdown
           populateCategoryDropdown([...categorySet]);
