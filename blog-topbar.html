@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     
     <!-- Favicon (small icon in browser tab) -->
-    <link rel="shortcut icon" type="image/ico" href="../assets/favicon.ico">
+    <link rel="shortcut icon" href="../assets/Code-icon.svg?" type="image/x-icon">
     
     <!-- Icon font library: Themify Icons (e.g., ti-arrow-up, ti-menu) -->
     <link rel="stylesheet" type="text/css" href="../assets/css/themify-icons.css">
@@ -252,7 +252,7 @@
             <div class="col-md-6 col-lg-4">
               <div class="card" data-category="${post.categories.join(' ')}">
                 <div class="img-place">
-                  <img src="${post.image}" alt="${post.title}">
+                  <img src="${post.images[0]}" alt="${post.title}">
                 </div>
                 <div class="caption">
                   ${categoriesHTML}
